@@ -4,10 +4,9 @@ import numpy as np
 from data.director import TOP_DIRECTORS
 #*****************************General Recommendation*********************************************
 def get_general_recommendations(top_k=50):
-    movies = pd.read_csv(r'data\curated_data (1).csv')
+    movies = pd.read_csv('data/curated_data (1).csv')
     movies['release_date'] = pd.to_datetime(movies['release_date'], errors='coerce')
     
-    current_year = pd.Timestamp.now().year
     recent_movies = movies[
         (movies['director'].isin(TOP_DIRECTORS))
     ]    
@@ -25,7 +24,7 @@ def get_content_based_recommendations(user_ratings_df, top_k=1):
     if len(user_ratings_df) == 0:
         return get_general_recommendations(top_k)
     
-    movies = pd.read_csv(r'data\curated_data (1).csv')
+    movies = pd.read_csv('data/curated_data (1).csv')
     
     liked_movie_ids = user_ratings_df['movie_id'].values
     liked_movies = movies[movies['movie_id'].isin(liked_movie_ids)]
@@ -106,10 +105,10 @@ def get_content_based_recommendations(user_ratings_df, top_k=1):
 def get_ncf_recommendations(user_ratings_df, top_k=12):
     """Use pseudo-user embedding from liked movies"""
     
-    movies = pd.read_csv(r'data\curated_data (1).csv')
+    movies = pd.read_csv('data/curated_data (1).csv')
     
     liked_movie_ids = user_ratings_df['movie_id'].values
-    with open(r'models\ncf_embeddings.pkl','rb') as data:
+    with open('models/ncf_embeddings.pkl','rb') as data:
         data = pickle.load(data)
     item_enc = data['item_enc']
     item_embeddings = data['item_embeddings']

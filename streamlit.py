@@ -12,7 +12,7 @@ def show_movie_grid(movies_df, user_id,tab_name,ai_mode):
     if user_id:
         user_ratings_df = get_user_ratings(user_id)
         user_ratings = dict(zip(user_ratings_df['movie_id'], user_ratings_df['rating']))
-    movies = pd.read_csv(r'C:\Users\User\OneDrive\Desktop\Recommendation\data\curated_data (1).csv')   
+    movies = pd.read_csv('data/curated_data (1).csv')   
     liked_movies = movies[movies['movie_id'].isin(user_ratings.keys())]
     user_profile = {
         'liked_directors': set(liked_movies['director'].dropna()),

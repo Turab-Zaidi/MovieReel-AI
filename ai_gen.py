@@ -59,7 +59,7 @@ def generate_ai_explanation(user_profile, movie, api_key):
 def get_personality(user_ratings_df):
     
 
-    movies_df = pd.read_csv(r'data\curated_data (1).csv')
+    movies_df = pd.read_csv('data/curated_data (1).csv')
     liked_movies = movies_df[movies_df['movie_id'].isin(user_ratings_df['movie_id'])]
     
     directors = [d for d in liked_movies['director'].dropna().tolist()]
@@ -101,7 +101,7 @@ Format:
 def get_taste_evolution(user_ratings_df):
 
 
-    movies_df = pd.read_csv(r'data\curated_data (1).csv')
+    movies_df = pd.read_csv('data/curated_data (1).csv')
 
 
     user_ratings_with_movies = user_ratings_df.merge(
