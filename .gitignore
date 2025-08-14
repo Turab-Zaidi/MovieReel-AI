@@ -1,0 +1,5 @@
+# Ignore virtual environment
+venv/
+
+# Ignore the model file
+models/ncf_model.h5
