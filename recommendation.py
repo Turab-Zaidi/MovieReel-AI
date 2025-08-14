@@ -18,7 +18,7 @@ def get_general_recommendations(top_k=50):
 
 
 #*****************************Content Based Recommendation*********************************************
-def get_content_based_recommendations(user_ratings_df, top_k=1):
+def get_content_based_recommendations(user_ratings_df, top_k=12):
     """Recommend movies based on director, actor, and genre similarity"""
     
     if len(user_ratings_df) == 0:
